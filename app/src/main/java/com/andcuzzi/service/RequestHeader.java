@@ -10,6 +10,14 @@ public class RequestHeader {
     private String uri;
     private RequestMethod method;
 
+    public RequestHeader(){ }
+
+    public RequestHeader(String host, String uri, RequestMethod method) {
+        this.host = host;
+        this.uri = uri;
+        this.method = method;
+    }
+
     public String getHost() {
         return host;
     }
