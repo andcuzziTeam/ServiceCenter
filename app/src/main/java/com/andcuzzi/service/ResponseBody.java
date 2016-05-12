@@ -5,4 +5,14 @@ package com.andcuzzi.service;
  */
 public class ResponseBody {
 
+    private String context;
+
+    public String getContext() {
+        return this.context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
 }

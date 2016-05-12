@@ -2,19 +2,17 @@ package com.andcuzzi.service;
 
 import org.json.JSONObject;
 
-/**
- * Deprecated
- */
+
 public class RequestBody {
 
 
-    private JSONObject body;
+    private String context;
 
-    public JSONObject getBody() {
-        return body;
+    public String getContext() {
+        return this.context;
     }
 
-    public void setBody(JSONObject body) {
-        this.body = body;
+    public void setContext(String context) {
+        this.context = context;
     }
 }

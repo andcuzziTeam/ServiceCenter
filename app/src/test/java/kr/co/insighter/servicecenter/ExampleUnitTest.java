@@ -1,8 +1,10 @@
 package kr.co.insighter.servicecenter;
 
+import com.andcuzzi.service.RequestBody;
 import com.andcuzzi.service.RequestHeader;
 import com.andcuzzi.service.RequestMethod;
 import com.andcuzzi.service.ResRequest;
+import com.andcuzzi.service.ResponseBody;
 
 import org.junit.Test;
 
@@ -17,7 +19,7 @@ public class ExampleUnitTest {
     @Test
     public void setandgetResRequest() {
 
-        //Header 세팅
+        //setter를 활용한 Header 세팅
         RequestHeader header = new RequestHeader();
         header.setHost("this");
         header.setMethod(RequestMethod.GET);
@@ -27,6 +29,10 @@ public class ExampleUnitTest {
         assertEquals(RequestMethod.GET,header.getMethod());
         assertEquals("/activity/subActivity",header.getUri());
 
+        //생성자를 활용한 Header 세팅
+        RequestHeader newHeader = new RequestHeader("this","/notification/this",RequestMethod.PUT);
+
+
         //Header를 Request에 세팅
         ResRequest request = new ResRequest();
         request.setHeader(header);
@@ -35,7 +41,25 @@ public class ExampleUnitTest {
         assertEquals("/activity/subActivity", request.getHeader().getUri());
         assertEquals(RequestMethod.GET, request.getHeader().getMethod());
 
-        //Body 세팅 -- JSONObject 오류
+        //newHeader를 newRequest에 세팅
+        ResRequest newRequest = new ResRequest();
+        newRequest.setHeader(newHeader);
+
+        assertEquals("this", newRequest.getHeader().getHost());
+        assertEquals("/notification/this", newRequest.getHeader().getUri());
+        assertEquals(RequestMethod.PUT, newRequest.getHeader().getMethod());
+
+
+        //Body 세팅 -- JSONObject 오류 --> string으로 바꿈
+        //Request Body set and get
+        RequestBody reqbody = new RequestBody();
+        reqbody.setContext("{\"name\" : \"this is name\" }");
+        assertEquals("{\"name\" : \"this is name\" }",reqbody.getContext());
+
+        //Response Body set and get
+        ResponseBody repbody = new ResponseBody();
+        repbody.setContext("{\"result\":\"this is result\"}");
+        assertEquals("{\"result\":\"this is result\"}",repbody.getContext());
 
 
     }
