@@ -6,4 +6,7 @@ package com.andcuzzi.service;
 public interface ServiceCenter {
 
     public ResResponse start(ResRequest request);
+
+    public ResResponse asyncStart(ResRequest request, ResResponseListener listener);
 }
+
